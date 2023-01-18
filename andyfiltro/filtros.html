@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FILTROS CON LENA (NODEJS)</title>
+  <script src="node_modules/lena.js/dist/browser.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="foto.jpg">
+
+  <style>
+
+*{
+    background-color: rgb(74, 74, 74);
+    position: relative;
+    text-align: center;
+    color: rgb(253, 223, 190);
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
+}
+button{
+    width: 150px;
+    background-color: rgb(0, 23, 98);
+    padding: 10px;
+    position: relative;
+    transition: all 0.25s;
+   
+}
+button:hover {
+	box-shadow: 1px 0px 8px 8px rgb(214, 120, 27);
+  
+}
+.titulo{
+    color: rgb(255, 238, 197);
+    
+}
+.cocina{
+    right: 20%;
+}
+
+</style>
+</head>
+
+<body>
+    <h1 class="titulo">Perro Cocinando Con Filtros</h1>
+    <img class="cocina" width="600px" height="500px"   src="foto.jpg" id="perro"/>
+    
+    <canvas id="imagen"></canvas>
+    <br>
+    <br>
+    <br>
+    <button onclick="rojo();">Rojo</button> 
+    <button onclick="gaussianMAX();">DesenfoqueMax</button>
+    <button onclick="brillo();">Brillo</button>
+    <button onclick="ALT();">Alterado</button>
+    <button onclick="contraste();">Contraste</button>
+    <button onclick="gaussianMIN();">Desenfoque</button>
+    <button onclick="gris();">Gris</button>
+    <button onclick="verde();">Verde</button> 
+    <br> <br>
+    <button onclick="pass();">Contraste+</button>
+    <button onclick="INVERT();">Invert+</button>
+    <button onclick="placian();">Exposicion-</button>
+    <button onclick="lowpass3();">lowpass3</button>
+    <button onclick="lowpass5();">lowpass5</button>
+    <button onclick="Mirror();">Espejo</button>
+    <button onclick="NOISE();">Noise</button>
+    <button onclick="horizontal();">HorizontalExpo</button>
+    <br> 
+    <br>
+    <button onclick="vertical();">VerticalExpo</button>
+    <button onclick="saturacion();">Saturacion</button>
+    <button onclick="sepia();">Sepia</button>
+    <button onclick="sharpen();">Sharpen</button>
+    <button onclick="sobelH();">sobelHorizontal</button>
+    <button onclick="sobelV();">sobelVertical</button>
+    <button onclick="THRESH();">Thresholding</button>
+
+    <script type="text/javascript">
+        function rojo () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["red"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+
+    function gaussianMAX () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["bigGaussian"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function azul () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["blue"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function brillo () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["brightness"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    
+    function ALT () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["canny"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function contraste () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["contrast"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function gaussianMIN () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["gaussian"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function gris () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["grayscale"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function verde () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["green"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function pass () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["highpass"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function INVERT () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["invert"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function placian () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["laplacian"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function lowpass3 () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["lowlowpass3"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function lowpass5 () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["lowlowpass5"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function Mirror () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["mirror"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function NOISE () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["noise"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function horizontal () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["prewittHorizontal"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function vertical() {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["prewittVertical"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function rober () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["roberts"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function saturacion () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["saturation"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function sepia () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["sepia"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function sharpen () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["sharpen"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function sobelH () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["sobelHorizontal"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    function sobelV () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["sobelVertical"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+
+    }   function THRESH () {  
+        var imagenOriginal = document.getElementById("perro");
+        var imagenFiltradaCanvas=document.getElementById("imagen");
+        var filter= LenaJS ["thresholding"];
+        
+        LenaJS.filterImage(imagenFiltradaCanvas, filter, imagenOriginal);
+    }
+    
+
+    </script>
+</body>
+</html>
